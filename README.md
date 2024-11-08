@@ -94,7 +94,7 @@ URLinsights is a Retrieval Augmented Generation (RAG) system that enables intell
 ## Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/URLinsights.git
+git clone https://github.com/Harshit-tech9/ragURL.git
 
 # Navigate to project directory
 cd URLinsights
@@ -118,11 +118,3 @@ streamlit run app.py
 
 ## Conclusion
 URLinsights demonstrates the potential of RAG systems for URL content analysis. The current implementation provides robust functionality for content extraction and analysis, while the proposed improvements outline a path for enhanced capabilities, performance, and scalability.
-
----
-
-## Contributing
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
