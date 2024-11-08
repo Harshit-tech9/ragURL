@@ -1,8 +1,8 @@
+import os
 import streamlit as st
 from rag import RAGChatbot
 from datetime import datetime
 from typing import List, Dict, Optional
-import time
 
 # Initialize session state
 if 'rag_system' not in st.session_state:
@@ -11,6 +11,27 @@ if 'selected_urls' not in st.session_state:
     st.session_state.selected_urls = []
 if 'messages' not in st.session_state:
     st.session_state.messages = []
+
+# Store API keys securely (e.g., in environment variables) 
+# VALID_API_KEYS = [os.environ.get("API_KEY_1"), os.environ.get("API_KEY_2")]
+VALID_API_KEYS = ["1234567890", "0987654321"]
+
+def authenticate():
+    """
+    Prompt the user to enter an API key and validate it against the list of valid API keys.
+    """
+    st.title("Authentication")
+    api_key = st.text_input("Enter your API key:", type="password")
+    
+    if api_key in VALID_API_KEYS:
+        st.success("Authentication successful!")
+        return True
+    elif api_key:
+        st.error("Invalid API key. Please try again.")
+    else:
+        st.warning("Please enter your API key to access the app.")
+    
+    return False
 
 def display_chat_message(role: str, content: str, urls: List[str] = None, timestamp: str = None):
     """Display a chat message with appropriate styling"""
@@ -22,6 +43,10 @@ def display_chat_message(role: str, content: str, urls: List[str] = None, timest
             st.caption(f"Time: {timestamp}")
 
 def main():
+    # Check if the user is authenticated
+    if not authenticate():
+        return
+
     st.title("📚 Multi-URL Chatbot")
     
     # Sidebar for URL management
@@ -43,7 +68,7 @@ def main():
                         st.success("URL processed successfully!")
                 else:
                     st.error(f"Error processing URL: {message}")
-        
+
         # URL selection
         st.subheader("Select URLs for Context")
         processed_urls = st.session_state.rag_system.get_processed_urls()
@@ -54,22 +79,14 @@ def main():
                 default=processed_urls
             )
             st.session_state.selected_urls = selected
-            
+
             # Remove URL button
             url_to_remove = st.selectbox("Select URL to remove", [""] + processed_urls)
             if st.button("Remove Selected URL") and url_to_remove:
                 if st.session_state.rag_system.remove_url(url_to_remove):
                     st.success(f"Removed {url_to_remove}")
                     st.rerun()
-        
-        # Chat controls
-        if st.session_state.rag_system.is_initialized():
-            st.subheader("Chat Controls")
-            if st.button("Clear Chat History"):
-                st.session_state.rag_system.clear_chat_history()
-                st.session_state.messages = []
-                st.rerun()
-    
+
     # Main chat interface
     st.header("Chat Interface")
     
