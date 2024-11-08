@@ -117,4 +117,13 @@ streamlit run app.py
 ```
 
 ## Conclusion
-URLinsights demonstrates the potential of RAG systems for URL content analysis. The current implementation provides robust functionality for content extraction and analysis, while the proposed improvements outline a path for enhanced capabilities, performance, and scalability.
+URLinsights demonstrates the potential of RAG systems for URL content analysis. The current implementation provides robust functionality for content extraction and analysis, while the proposed improvements outline a path for enhanced capabilities, performance, and scalability. 
+
+## UI Screens 
+
+<!-- Features Screenshot Grid -->
+<p float="left">
+  <img src="./assets/screenshots/url-analysis.png" width="250" />
+  <img src="./assets/screenshots/rag-system.png" width="250" /> 
+  <img src="./assets/screenshots/results.png" width="250" />
+</p>
