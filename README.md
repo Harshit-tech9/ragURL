@@ -11,7 +11,7 @@ URLinsights is a Retrieval Augmented Generation (RAG) system that enables intell
 - [Installation](#installation)
 - [Usage](#usage)
 - [Conclusion](#conclusion)
-- [UI Screens](#UIScreens)
+- [UI Screens](#UI-Screens)
 
 ## Approach
 1. **Environment Setup**
