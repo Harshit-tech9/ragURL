@@ -124,7 +124,10 @@ URLinsights demonstrates the potential of RAG systems for URL content analysis. 
 <!-- Features Screenshot Grid -->
 <p float="left">
   <img src="./images/AddURL.png" width="250" />
+
   <img src="./images/Authentication.png" width="250" /> 
+  
   <img src="./images/chat1.png" width="250" />
+  
   <img src="./images/chat2.png" width="250" />
 </p>
